@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clasico - Shop</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      color: #333;
+      overflow-x: hidden;
+    }
+    /* Sidebar Navbar */
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.8);
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    aside h1 {
+      font-size: 28px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    aside nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    aside nav ul li a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    aside nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffcc00;
+    }
+    /* Shop Container */
+    .shop-container {
+      margin-left: 240px; /* Matches sidebar width */
+    padding: 30px;
+    animation: fadeIn 1s ease-in-out;
+    }
+    /* Category Filter Bar */
+    .category-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    .category-filter button {
+    background: #fff;
+    border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .category-filter button:hover,
+    .category-filter button.active {
+      background: #ffcc00;
+      color: #000;
+    }
+    /* Shop Items Grid */
+    .shop-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 25px;
+    }
+    .shop-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUp 0.8s ease-in-out;
+    }
+    .shop-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+    .shop-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .shop-item img:hover {
+      transform: scale(1.05);
+    }
+    .shop-item h3 {
+      font-size: 24px;
+      color: #333;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    .shop-item p {
+      color: #777;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .shop-item .price {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .shop-item .price span {
+      font-weight: bold;
+    }
+    .shop-item button {
+      background: #ffcc00;
+      border: none;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .shop-item button:hover {
+      background: #e6b800;
+      transform: translateY(-3px);
+    }
+    /* Animations */
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar Navbar -->
+  <aside>
+    <h1>Clasico</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Shop Container -->
+  <div class="shop-container">
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <button data-category="all" class="active">All</button>
+      <button data-category="Suits">Suits</button>
+      <button data-category="Dresses">Dresses</button>
+      <button data-category="Shoes">Shoes</button>
+      <button data-category="Fragrance">Fragrance</button>
+      <button data-category="Bags">Bags</button>
+    </div>
+
+    <!-- Shop Items Grid -->
+    <div class="shop-items-grid">
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/first one.png" alt="Topman slim tux suit">
+        <h3>Topman slim tux suit</h3>
+        <p>Perfect for making a statement at any party.</p>
+        <div class="price">
+          Original: <span>$120</span> &nbsp; Discount: <span>33.33%</span><br>
+          Final: <span>$80</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/image (1) (11).png" alt="slim suit in forest green oxford texture">
+        <h3>Slim suit in forest green oxford texture</h3>
+        <p>Chic and stylish for a night out.</p>
+        <div class="price">
+          Original: <span>$120</span> &nbsp; Discount: <span>29.17%</span><br>
+          Final: <span>$85</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/TAwthar.png" alt="Boxy double breasted suit">
+        <h3>Boxy double breasted suit</h3>
+        <p>Timeless, sleek, and elegant</p>
+        <div class="price">
+          Original: <span>$125</span> &nbsp; Discount: <span>32%</span><br>
+          Final: <span>$85</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/image (1) (13).png" alt="Topman Slim Suit in Navy">
+        <h3>Topman Slim Suit in Navy</h3>
+        <p>Sharp, clean, and confident</p>
+        <div class="price">
+          Original: <span>$140</span> &nbsp; Discount: <span>28.57%</span><br>
+          Final: <span>$100</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/Zara LIMITED EDITION TUXEDO JACKET - Black - Image 0.png" alt="LIMITED EDITION TUXEDO JACKET">
+        <h3>Limited edittion tuxedo jacket</h3>
+        <p>Luxurious and stylish.</p>
+        <div class="price">
+          Original: <span>$450</span> &nbsp; Discount: <span>44.44%</span><br>
+          Final: <span>$250</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Suits">
+        <img src="Image/Zara SLIM FIT SUIT JACKET - Black - Image 0.png" alt="SLIM FIT SUIT JACKET">
+        <h3>Slim fit suit jacket</h3>
+        <p>Classic and refined</p>
+        <div class="price">
+          Original: <span>$200</span> &nbsp; Discount: <span>25%</span><br>
+          Final: <span>$150</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+
+      <div class="shop-item" data-category="Dresses">
+        <img src="Image/ASOS DESIGN cowl high neck mini dress in black.png" alt="cowl high neck mini dress in black">
+        <h3>Cowl high neck mini dress in black</h3>
+        <p>Sparkly and dreamy.</p>
+        <div class="price">
+          Original: <span>$80</span> &nbsp; Discount: <span>37.5%</span><br>
+          Final: <span>$50</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Dresses">
+        <img src="Image/ASOS DESIGN extreme asymmetric polyamide draped mini dress in black.png" alt="Party Sneakers">
+        <h3>Majestic and graceful<h3>
+        <p>Comfortable yet stylish sneakers for parties.</p>
+        <div class="price">
+          Original: <span>$70</span> &nbsp; Discount: <span>14.28%</span><br>
+          Final: <span>$60</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Dresses">
+        <img src="Image/ASOS DESIGN scuba scoop halter mini dress with hook and eye detail in black.png" alt="Party Sneakers">
+        <h3>Scuba scoop halter mini dress with hook and eye detail in black</h3>
+        <p>Light, flowy, and charming</p>
+        <div class="price">
+          Original: <span>$65</span> &nbsp; Discount: <span>7.69%</span><br>
+          Final: <span>$60</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Dresses">
+        <img src="Image/ASOS DESIGN slash neck flute sleeve mini dress with back detail in burgundy.png" alt="Party Sneakers">
+        <h3>Slash neck flute sleeve mini dress with back detail in burgundy</h3>
+        <p> Bold, silky, and stunning</p>
+        <div class="price">
+          Original: <span>$60</span> &nbsp; Discount: <span>8.33%</span><br>
+          Final: <span>$55</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div><div class="shop-item" data-category="Dresses">
+        <img src="Image/image (1) (12).png" alt="Party Sneakers">
+        <h3>Long sleeve twist shoulder with lace up back mini dress in charcoal</h3>
+        <p>Glamorous and dazzling</p>
+        <div class="price">
+          Original: <span>$68</span> &nbsp; Discount: <span>11.76%</span><br>
+          Final: <span>$60</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      
+      
+      <div class="shop-item" data-category="Shoes">
+        <img src="Image/ASOS DESIGN lace up boat shoes in stone.png" alt="Statement Necklace">
+        <h3>lace up boat shoes in stone</h3>
+        <p>Sleek and timeless</p>
+        <div class="price">
+        Original: <span>$50</span> &nbsp; Discount: <span>10%</span><br>
+        Final: <span>$45</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+    </div>
+    <div class="shop-item" data-category="Shoes">
+        <img src="Image/ASOS DESIGN lace up boat shoes in white with chunky sole.png" alt="Elegant Earrings">
+        <h3>lace up boat shoes in white with chunky sole</h3>
+        <p>Bold and stunning</p>
+        <div class="price">
+        Original: <span>$45</span> &nbsp; Discount: <span>22.22%</span><br>
+        Final: <span>$35</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+    </div>
+    <div class="shop-item" data-category="Shoes">
+      <img src="Image/ASOS DESIGN lace up shoes in black with chunky sole and apron toe.png" alt="Elegant Earrings">
+      <h3>lace up shoes in black with chunky sole and apron toe</h3>
+      <p>Simple yet classy</p>
+      <div class="price">
+      Original: <span>$65</span> &nbsp; Discount: <span>23.08%</span><br>
+      Final: <span>$50</span>
+      </div>
+      <button onclick="window.location.href='contact.html'">Add to Cart</button>
+  </div>
+  <div class="shop-item" data-category="Shoes">
+    <img src="Image/ASOS DESIGN lace up shoes in black with square toe.png" alt="Elegant Earrings">
+    <h3>lace up shoes in black with square toe</h3>
+    <p>Luxurious and comfortable</p>
+    <div class="price">
+    Original: <span>$60</span> &nbsp; Discount: <span>16.67%</span><br>
+    Final: <span>$50</span>
+    </div>
+    <button onclick="window.location.href='contact.html'">Add to Cart</button>
+</div>
+<div class="shop-item" data-category="Shoes">
+  <img src="Image/ASOS DESIGN chunky lace up shoes in dark brown.png" alt="Elegant Earrings">
+  <h3>Chunky lace up shoes in dark brown</h3>
+  <p>Elegant and comfy</p>
+  <div class="price">
+  Original: <span>$75</span> &nbsp; Discount: <span>20%</span><br>
+  Final: <span>$60</span>
+  </div>
+  <button onclick="window.location.href='contact.html'">Add to Cart</button>
+</div>
+</div>
+    <div class="shop-items-grid">
+      <div class="shop-item" data-category="Shoes">
+        <img src="Image/ASOS DESIGN Mentor bow loafer flat shoes in burgundy patent.png" alt="Topman slim tux suit">
+        <h3>Mentor bow loafer flat shoes in burgundy patent</h3>
+        <p>Clean and elegant.</p>
+        <div class="price">
+          Original: <span>$60</span> &nbsp; Discount: <span>25%</span><br>
+          Final: <span>$45</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Shoes">
+        <img src="Image/jj.png" alt="slim suit in forest green oxford texture">
+        <h3>Majesty chunky fringe loafer in black</h3>
+        <p> Sophisticated and stylish</p>
+        <div class="price">
+          Original: <span>$70</span> &nbsp; Discount: <span>11.43%</span><br>
+          Final: <span>$62</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Shpes">
+        <img src="Image/mm.png" alt="Boxy double breasted suit">
+        <h3>Schuh Leyton chunky loafer in black</h3>
+        <p>A bold and stylish choice</p>
+        <div class="price">
+          Original: <span>$85</span> &nbsp; Discount: <span>17.65%</span><br>
+          Final: <span>$70</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Shoes">
+        <img src="Image/ONLY loafer with contrast stitching in black (1).png" alt="Topman Slim Suit in Navy">
+        <h3>Loafer with contrast stitching in black</h3>
+        <p>Graceful and sophisticated</p>
+        <div class="price">
+          Original: <span>$99.99</span> &nbsp; Discount: <span>10%</span><br>
+          Final: <span>$90</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/jean-paul-gaultier-le-male-elixir-parfum.webp" alt="LIMITED EDITION TUXEDO JACKET">
+        <h3>Jean paul gaultier le male elixir</h3>
+        <p>Deep, sensual, and bold.</p>
+        <div class="price">
+          Original: <span>$160</span> &nbsp; Discount: <span>12.5%</span><br>
+          Final: <span>$140</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/prd-ls1-711957-600x600.avif" alt="SLIM FIT SUIT JACKET">
+        <h3>Eros EDP 100 ml</h3>
+        <p>Fresh and invigorating</p>
+        <div class="price">
+          Original: <span>$80</span> &nbsp; Discount: <span>12.5%</span><br>
+          Final: <span>$70</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/108208-4.jpg" alt="cowl high neck mini dress in black">
+        <h3>Stronger with you intensely</h3>
+        <p>Soft, sweet, and timeless</p>
+        <div class="price">
+          Original: <span>$100</span> &nbsp; Discount: <span>3.05%</span><br>
+          Final: <span>$96.95</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/Buy-Chanel-Perfume.png" alt="Party Sneakers">
+        <h3>COCO MADEMOISELLE</h3>
+        <p>Calm and soothing.</p>
+        <div class="price">
+          Original: <span>$120</span> &nbsp; Discount: <span>8.33%</span><br>
+          Final: <span>$110</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/Dior-Perfume-Women-review-2.webp" alt="Party Sneakers">
+        <h3>Miss dior eau de parfum</h3>
+        <p> Exotic and enchanting</p>
+        <div class="price">
+          Original: <span>$140</span> &nbsp; Discount: <span>21.43%</span><br>
+          Final: <span>$110</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      <div class="shop-item" data-category="Fragrance">
+        <img src="Image/prada-paradoxe-parfemovana-voda-plnitelna-pro-zeny___220825.webp" alt="Party Sneakers">
+        <h3>Prada Paradoxe Eau de Parfum</h3>
+        <p>Soft, rosy, and romantic</p>
+        <div class="price">
+          Original: <span>$190</span> &nbsp; Discount: <span>7.89%</span><br>
+          Final: <span>$175</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div><div class="shop-item" data-category="Bags">
+        <img src="Image/ASOS DESIGN 90s shoulder bag with bow in burgundy.png" alt="Party Sneakers">
+        <h3>90s shoulder bag with bow in burgundy</h3>
+        <p>Spacious and stylish for everyday use.</p>
+        <div class="price">
+          Original: <span>$60</span> &nbsp; Discount: <span>16.67%</span><br>
+          Final: <span>$50</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+      </div>
+      
+      
+      <div class="shop-item" data-category="Bags">
+        <img src="Image/ASOS DESIGN clean scoop shoulder bag with detachable ball charm in tan.png" alt="Statement Necklace">
+        <h3>Clean scoop shoulder bag with detachable ball charm in tan</h3>
+        <p>Fashion-forward and sophisticated</p>
+        <div class="price">
+        Original: <span>$50</span> &nbsp; Discount: <span>10%</span><br>
+        Final: <span>$45</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+    </div>
+    <div class="shop-item" data-category="Bags">
+        <img src="Image/PASQ multi pocket shoulder bag in cream.png" alt="Elegant Earrings">
+        <h3>Multi pocket shoulder bag in cream</h3>
+        <p>Trendy, spacious, and eye-catching</p>
+        <div class="price">
+        Original: <span>$40</span> &nbsp; Discount: <span>15%</span><br>
+        Final: <span>$34</span>
+        </div>
+        <button onclick="window.location.href='contact.html'">Add to Cart</button>
+    </div>
+    <div class="shop-item" data-category="Bags">
+      <img src="Image/True Decadence pearlescent box clutch bag in white.png" alt="Elegant Earrings">
+      <h3>True Decadence pearlescent box clutch bag in white</h3>
+      <p>Fashion-forward and sophisticated</p>
+      <div class="price">
+      Original: <span>$30</span> &nbsp; Discount: <span>20%</span><br>
+      Final: <span>$24</span>
+      </div>
+      <button onclick="window.location.href='contact.html'">Add to Cart</button>
+  </div>
+  <div class="shop-item" data-category="Bags">
+    <img src="Image/ASOS DESIGN medium bowling bag with emboss detail in black.png" alt="Elegant Earrings">
+    <h3>Medium bowling bag with emboss detail in black</h3>
+    <p>A sparkling accessory for a night out</p>
+    <div class="price">
+    Original: <span>$70</span> &nbsp; Discount: <span>14.29%</span><br>
+    Final: <span>$60</span>
+    </div>
+    <button onclick="window.location.href='contact.html'">Add to Cart</button>
+</div>
+<div class="shop-item" data-category="Bags">
+  <img src="Image/5cb6cda9fa57dd62760c241b353cb787.jpg" alt="Elegant Earrings">
+  <h3>Embossed Detail Clutch Bag</h3>
+  <p>Elegant and perfect for formal events</p>
+  <div class="price">
+  Original: <span>$25</span> &nbsp; Discount: <span>20%</span><br>
+  Final: <span>$20</span>
+  </div>
+  <button onclick="window.location.href='contact.html'">Add to Cart</button>
+</div>
+</div>
+<!-- Filtering Script -->
+<script>
+    const categoryButtons = document.querySelectorAll('.category-filter button');
+    const shopItems = document.querySelectorAll('.shop-item');
+
+    categoryButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+        // Remove active class from all buttons
+        categoryButtons.forEach((btn) => btn.classList.remove('active'));
+        // Add active class to the clicked button
+        this.classList.add('active');
+        const category = this.getAttribute('data-category');
+
+        shopItems.forEach((item) => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+    }
+        });
+    });
+    });
+</script>
+</body>
+</html>

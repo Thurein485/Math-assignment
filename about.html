@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clasico - About Us</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Sidebar Navbar */
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.8);
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    aside h1 {
+      font-size: 28px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    aside nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    aside nav ul li a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    aside nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffcc00;
+    }
+    /* About Container */
+    .about-container {
+      margin-left: 240px; /* Space for the sidebar */
+      padding: 40px 60px;
+      max-width: 1200px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .about-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .about-header h2 {
+      font-size: 48px;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .about-header p {
+      font-size: 22px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: #555;
+    }
+    /* About Content */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 40px;
+      margin-bottom: 40px;
+    }
+    .about-content .text {
+      font-size: 18px;
+      text-align: justify;
+      color: #555;
+    }
+    .about-content .text p {
+      margin-bottom: 20px;
+    }
+    .about-content .image {
+      text-align: center;
+    }
+    .about-content .image img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Founders Section */
+    .founders {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .founders h3 {
+      font-size: 40px;
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+    .founders .founder-profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .founder {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .founder:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    .founder img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+    .founder h4 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .founder p {
+      font-size: 16px;
+      color: #777;
+    }
+    /* Back to Shop Button */
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      background: #ffcc00;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 20px;
+      transition: background 0.3s, transform 0.3s ease;
+    }
+    .back-button:hover {
+      background: #e6b800;
+      transform: translateY(-2px);
+    }
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      .about-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar Navbar -->
+  <aside>
+    <h1>Clasico</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- About Us Content -->
+  <div class="about-container">
+    <div class="about-header">
+      <h2>About Clasico</h2>
+      <p>
+        Welcome to Clasico, your ultimate destination for chic party outfits and accessories. We fuse the latest fashion trends with timeless elegance to ensure you shine at every celebration.
+      </p>
+    </div>
+    <div class="about-content">
+      <div class="text">
+        <p>
+          Our story began with a simple yet powerful vision: to transform party fashion by offering exclusive, high-quality pieces at affordable prices. We carefully select each item in our collection to embody style and sophistication, from stunning dresses to elegant accessories.
+        </p>
+        <p>
+          At Clasico, we believe fashion is more than just clothing—it's a way to express yourself. Our mission is to empower you to stand out and feel confident at any event. We’re committed to offering not just beautiful items, but also great value through exclusive discounts.
+        </p>
+      </div>
+      <div class="image">
+        <img src="Image/pexels-pixabay-325876.jpg" alt="About Clasico">
+      </div>
+    </div>
+    <div class="founders">
+      <h3>Meet Our Founders</h3>
+      <div class="founder-profiles">
+        <div class="founder">
+          <img src="Image/image.jpg" alt="Thurein Lin Thant">
+          <h4>Thurein Lin Thant</h4>
+          <p>
+            Co-founder & Visionary – With a passion for revolutionizing party fashion, Thurein's forward-thinking ideas have shaped the unique style of Clasico.
+          </p>
+        </div>
+        <div class="founder">
+          <img src="Image/image (1) (10).png" alt="Kyaw Myint Myat Hein">
+          <h4>Kyaw Myint Myat Hein</h4>
+          <p>
+            Co-founder & Creative Director, his creative vision combines beauty with practicality, ensuring each piece is both stunning and comfortable.
+          </p>
+        </div>
+      </div>
+    </div>
+    <a href="shop.html" class="back-button">Back to Shop</a>
+  </div>
+</body>
+</html>
